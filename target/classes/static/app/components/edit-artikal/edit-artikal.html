@@ -1,0 +1,35 @@
+<div ng-controller="editArtikalCtrl">
+	<h1>Unesite vrednosti za artikal koji zelite da promenite:</h1>
+	<form>
+		<div class="form-group">
+			<label>Naziv</label> <input class="form-control"
+				ng-model="artikli.naziv" />
+		</div>
+		<div class="form-group">
+			<label>Pakovanje</label> <input class="form-control"
+				ng-model="artikli.pakovanje" />
+		</div>
+		<div class="form-group">
+			<label>Jedinica Mere</label> <input class="form-control"
+				ng-model="artikli.jedinicaMere" />
+		</div>
+		<div class="form-group">
+			<label>Kolicina</label> <input class="form-control"
+				ng-model="artikli.kolicina" />
+		</div>
+		<div class="form-group">
+			<label>Kalkulisana Cena</label> <input class="form-control"
+				ng-model="artikli.kalkulisanaCena" />
+		</div>
+
+		<div class="form-group">
+			<label>Magacin</label> <select class="form-control"
+				ng-model="artikli.magacinId">
+				<option ng-repeat="m in magacini" value="{{m.id}}"
+					ng-selected="m.id == magacin.magacinId">{{m.naziv}}</option>
+			</select>
+		</div>
+
+		<button type="button" ng-click="doEdit()" class="btn btn-success">Promeni</button>
+	</form>
+</div>

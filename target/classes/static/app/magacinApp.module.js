@@ -1,0 +1,1 @@
+var magacinApp = angular.module("magacinApp", ['ngRoute']);

@@ -1,0 +1,79 @@
+<div ng-controller="artikliCtrl">
+	<h1>Artikli</h1>
+
+	<div class="row">
+
+		<div class="col-3 col-lg-12">
+
+			<form>
+				<button class="btn btn-primary" ng-click="goToAdd()">Dodavanje</button>
+			</form>
+
+
+
+		</div>
+
+		<div class="col-3 col-lg-12">
+			<form>
+				<div class="form-group">
+					<label>Naziv</label> <input class="form-control"
+						ng-model="searchParams.artikalNaziv" />
+				</div>
+				<div class="form-group">
+					<label>Magacini</label> <select class="form-control"
+						ng-model="searchParams.magacinNaziv">
+						<option ng-repeat="m in magacini" value="{{m.naziv}}"
+							ng-selected="m.id == magacin.magacinId">{{m.naziv}}</option>
+					</select>
+				</div>
+				<button ng-click="doSearch()" class="btn btn-primary">Trazi</button>
+			</form>
+		</div>
+
+		<div class="col-12 col-lg-12">
+
+			<div class="btn-group float-right">
+				<button ng-disabled="pageNum == 0" ng-click="changePage(-1)"
+					class="btn btn-info">Prosla</button>
+				<button ng-disabled="pageNum == totalPages - 1"
+					ng-click="changePage(1)" class="btn btn-info">Sledeca</button>
+			</div>
+
+			<br> <br>
+
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Naziv</th>
+						<th>Pakovanje</th>
+						<th>Kolicina</th>
+						<th>K.cena</th>
+						<th>Magacin</th>
+						<th>Promeni</th>
+						<th>Obrisi</th>
+						<th>Primi</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="r in artikli">
+						<td>{{r.naziv}}</td>
+						<td>{{r.pakovanje + r.jedinicaMere}}</td>
+						<td>{{r.kolicina}}</td>
+						<td>{{r.kalkulisanaCena}}</td>
+						<td>{{r.magacinName}}</td>
+						<td><button class="btn btn-warning" ng-click="goToEdit(r.id)">
+								<i class="fa fa-pencil" aria-hidden="true"></i>
+							</button></td>
+						<td><button type="button" class="btn btn-danger" ng-disabled="r.kolicina != 0.0"
+								ng-click="doDelete(r.id)">
+								<i class="fa fa-trash-o" aria-hidden="true"></i>
+							</button></td>
+						<td><button class="btn btn-warning" ng-click="goToPrimi(r.id)">
+								<i class="fa fa-plus-circle" aria-hidden="true"></i>
+							</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
